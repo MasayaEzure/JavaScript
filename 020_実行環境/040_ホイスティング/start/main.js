@@ -1,7 +1,7 @@
 //  無名関数（関数式）
 const a = function() {
-    console.log(number);
-    let number = 1; // Error
+    console.log(number) // Error
+    let number = 1;
 
     b(); // b is called.
 
