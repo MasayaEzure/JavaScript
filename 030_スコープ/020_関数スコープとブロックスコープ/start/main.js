@@ -15,7 +15,6 @@ a();
     console.log(num2);
     console.log(number);
 
-    // 関数宣言ではブロックスコープは無視されるため、スコープ外でも呼び出せる
     const b = function() {
         console.log('this is called.');
     }
