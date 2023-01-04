@@ -7,8 +7,9 @@
  * ※if文は削除してはいけません。
  */
 function fn() {
-    if(true) {
-        let a = 'fn called';
+    let a = '';
+    if (true) {
+        a = 'fn called';
     }
     return a; // ReferenceError: a is not defined
 }
@@ -22,11 +23,13 @@ console.log(result);
  * 期待値を出力するように修正してください。
  */
 var val = 'val1';
+
 function fn2() {
     console.log(val); // 期待値->'val1'
 
-    if(true) {
-        var val = 'val2';
+    if (true) {
+        // （回答）var ではなく let を使うことでブロックスコープを有効にする
+        let val = 'val2';
         console.log(val); // 期待値->'val2'
     }
 
@@ -46,3 +49,16 @@ fn2();
  * increment(); // 期待値->4
  */
 
+{
+    let num = 0;
+
+    function increment() {
+        num += 1;
+        console.log(num);
+    }
+}
+
+increment();
+increment();
+increment();
+increment();
