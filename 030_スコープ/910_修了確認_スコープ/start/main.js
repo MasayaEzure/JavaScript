@@ -7,7 +7,7 @@
  * ※if文は削除してはいけません。
  */
 function fn() {
-    let a = '';
+    let a;
     if (true) {
         a = 'fn called';
     }
@@ -28,7 +28,6 @@ function fn2() {
     console.log(val); // 期待値->'val1'
 
     if (true) {
-        // （回答）var ではなく let を使うことでブロックスコープを有効にする
         let val = 'val2';
         console.log(val); // 期待値->'val2'
     }
@@ -48,19 +47,14 @@ fn2();
  * increment(); // 期待値->3
  * increment(); // 期待値->4
  */
-
-if (true) {
-    // ブロックスコープ内におけるプライベート変数となる（外からの参照不可）
+{
     let num = 0;
-
-    // 関数はブロックスコープを無視するため、スコープ外からでも呼び出しが可能
 
     function increment() {
         num += 1;
         console.log(num);
     }
 }
-
 increment();
 increment();
 increment();

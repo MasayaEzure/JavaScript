@@ -1,16 +1,16 @@
-// グローバルスコープ (num, fn1)
-let num = 2;
+// グローバルスコープ (a, fn1)
+let a = 2;
 
 function fn1() {
-    // 関数スコープ① (num2, fn2)
+    // 関数スコープ① (b, fn2)
     // グローバルスコープを参照可能
-    let num2 = 1;
+    let b = 1;
 
     function fn2() {
-        // 関数スコープ (num3)
+        // 関数スコープ (c)
         // グローバルスコープと関数スコープ①を参照可能
-        let num3 = 0;
-        console.log(num2);
+        let c = 0;
+        console.log(b);
     }
     fn2();
 }
