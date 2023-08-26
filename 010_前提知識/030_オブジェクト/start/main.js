@@ -1,17 +1,17 @@
 let obj = {
-    // プロパティ
+    // 名前：値
     prop1: 'value1',
-    // メソッド： オブジェクトのプロパティに格納された関数
-    prpo2: function() {
-        console.log('value2')
+    prop2: 'value2',
+    // 名前：関数
+    prop3: function() {
+        console.log('value3');
     },
-    // オブジェクト
-    prop3: {
-        prop4: 'value4'
-    }
-}
+    // 名前：オブジェクト
+    prop4: { prop5: 'value5' }
+};
 
-console.log(obj);
 console.log(obj.prop1);
-obj.prpo2();
-console.log(obj.prop3.prop4);
+console.log(obj.prop2);
+obj.prop3();
+console.log(obj.prop4);
+console.log(obj.prop4.prop5);
