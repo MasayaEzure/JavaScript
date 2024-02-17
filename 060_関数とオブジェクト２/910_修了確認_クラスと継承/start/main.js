@@ -43,12 +43,45 @@
  * login failed <- loginで失敗した場合
  */
 
-function loginController(user) {
-  if (user.login()
-    && user.checkRoll()
-    && user.redirect()) {
-    console.log('login success');
-  } else {
-    console.log('login failed');
-  }
+class User {
+    constructor(userName) {
+        this.userName = userName;
+        this.redirectTo = '/';
+    }
+    login() {
+        console.log(`User: ${this.userName}`);
+        return true;
+    }
+    checkRoll() {
+        console.log('you have nomarl roll');
+        return true;
+    }
+    redirect() {
+        console.log(`redirect : ${this.redirectTo}`);
+        return true;
+    }
 }
+
+class AdminUser extends User {
+    constructor(userName) {
+        super(userName);
+        this.redirectTo = '/admin';
+    }
+    checkRoll() {
+        console.log('you have admin roll');
+        return true;
+    }
+}
+
+function loginController(user) {
+    if (user.login() &&
+        user.checkRoll() &&
+        user.redirect()) {
+        console.log('login success');
+    } else {
+        console.log('login failed');
+    }
+}
+
+loginController(new User('Bob'));
+loginController(new AdminUser('Bob'));

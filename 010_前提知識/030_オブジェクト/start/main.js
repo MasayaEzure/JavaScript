@@ -8,7 +8,8 @@ let obj = {
     }
 }
 
-console.log(obj);
 console.log(obj.prop1);
-obj.prpo2();
-console.log(obj.prop3.prop4);
+console.log(obj.prop2);
+obj.prop3();
+console.log(obj.prop4);
+console.log(obj.prop4.prop5);
