@@ -1,11 +1,8 @@
 let obj = {
-    // プロパティ
     prop1: 'value1',
-    // メソッド： オブジェクトのプロパティに格納された関数
     prpo2: function() {
         console.log('value2')
     },
-    // オブジェクト
     prop3: {
         prop4: 'value4'
     }
