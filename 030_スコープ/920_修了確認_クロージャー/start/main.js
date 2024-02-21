@@ -16,33 +16,34 @@
  * ※四則演算は"+","-","*","/"を数値ではさんで計算を行います。
  */
 function calcFactory(num) {
-    let newNum;
-    return {
-        plus: function(val) {
-            newNum = num + val;
-            console.log(`${num} + ${val} = ${newNum}`);
-            num = newNum;
-        },
-        minus: function(val) {
-            newNum = num - val;
-            console.log(`${num} - ${val} = ${newNum}`);
-            num = newNum;
-        },
-        multiply: function(val) {
-            newNum *= val;
-            console.log(`${num} * ${val} = ${newNum}`);
-            num = newNum;
-        },
-        divide: function(val) {
-            newNum /= val;
-            console.log(`${num} * ${val} = ${newNum}`);
-            num = newNum;
-        }
-    };
+  let newNum;
+  return {
+    calculateNum: function (val, operation) {
+      switch (operation) {
+        case "+":
+          newNum = num + val;
+          break;
+        case "-":
+          newNum = num - val;
+          break;
+        case "*":
+          newNum = num * val;
+          break;
+        case "/":
+          newNum = num / val;
+          break;
+        default:
+          console.log("Invalid operation");
+          return;
+      }
+      console.log(`${num} ${operation} ${val} = ${newNum}`);
+      num = newNum;
+    },
+  };
 }
 
 const calc = calcFactory(10);
-calc.plus(5);
-calc.minus(3);
-calc.multiply(3);
-calc.divide(2);
+calc.calculateNum(5, "+");
+calc.calculateNum(3, "-");
+calc.calculateNum(3, "*");
+calc.calculateNum(2, "/");
