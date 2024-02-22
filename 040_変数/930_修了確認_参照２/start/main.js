@@ -13,11 +13,12 @@ let obj = {
 }
 
 function minus(obj, val) {
-    obj.prop1 = obj.prop1 - val;
+    let prop1 = obj.prop1;
+    prop1 = prop1 - val;
 }
 
 minus(obj, 1);
-console.log(obj.prop1); // 出力結果:9
+console.log(obj.prop1);
 /**
  * 問題２：
  * double関数を使ってobj.prop1の値を２倍にしたい
@@ -30,7 +31,8 @@ console.log(obj.prop1); // 出力結果:9
 
 
 function double(obj) {
-    obj.prop1 = obj.prop1 * 2;
+    let { prop1 } = obj;
+    prop1 = prop1 * 2;
 }
 
 double(obj);
@@ -55,16 +57,16 @@ function fn({ prop2 }) {
     return { prop2: prop };
 }
 obj = fn(obj);
-console.log(obj.prop2.prop3);
+// console.log(obj.prop2.prop3);
 
 /**
  * 問題４：
  * through関数を経由して格納されるobj2は
  * objと等価でしょうか？
  */
-function through(obj) {
+function through (obj) {
     return obj;
 }
 
 const obj2 = through(obj);
-console.log(obj === obj2);
+// console.log(obj === obj2);

@@ -7,9 +7,3 @@ const person = {
     }
 }
 person.hello();
-
-function fb(ref) {
-    ref(); // この時点では関数を実行するため、グローバルオブジェクトを参照する
-}
-
-fb(person.hello);

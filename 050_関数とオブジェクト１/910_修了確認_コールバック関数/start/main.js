@@ -7,14 +7,12 @@
  * ※必ずperson.helloメソッドは解答内で使用してください。
  */
 const person = {
-    hello: function() {
+    hello: function () {
         return 'hello Tom';
     }
 }
 
-setTimeout(function() {
-    console.log(person.hello())
-}, 1000);
+// setTimeout(/** ここに追記 */, 1000);
 
 /**
  * 問題２：
@@ -26,9 +24,7 @@ setTimeout(function() {
  * ※alertは第一引数に渡した文字列を画面のダイアログに表
  * 示する関数です。
  */
-setTimeout(function() {
-    alert(person.hello())
-}, 1000);
+
 
 /**
  * 問題３：
@@ -50,7 +46,7 @@ function after1s(callack) {
 }
 
 // この時点で実行します。
-after1s(obj.greeting);
+// after1s(obj.greeting);
 
 // この後でgreetingを書き換えます。
 obj.greeting = function() {
@@ -67,24 +63,34 @@ obj.greeting = function() {
  * 
  * ※コールバック関数を用いて実装してください。
  */
-function calcFactory(val, callback) {
+function calcFactory(val) {
     return {
-        operate: function(target, operator, symbol) {
-            const operators = {
-                plus: (a, b) => a + b,
-                minus: (a, b) => a - b,
-                multiply: (a, b) => a * b,
-                divide: (a, b) => a / b
-            };
-            const newVal = operators[operator](val, target);
-            callback(`${val} ${symbol} ${target} = ${newVal}`);
+        plus: function(target) {
+            const newVal = val + target;
+            console.log(`${val} + ${target} = ${newVal}`);
+            val = newVal;
+        },
+        minus: function(target) {
+            const newVal = val - target;
+            console.log(`${val} - ${target} = ${newVal}`);
+            val = newVal;
+        },
+        multiply: function(target) {
+            const newVal = val * target;
+            console.log(`${val} x ${target} = ${newVal}`);
+            val = newVal;
+        },
+        divide: function(target) {
+            const newVal = val / target;
+            console.log(`${val} / ${target} = ${newVal}`);
             val = newVal;
         }
-    }
+    };
 }
 
-const calc = calcFactory(10, console.log);
-calc.operate(5, 'plus', '+');
-calc.operate(3, 'minus', '-');
-calc.operate(3, 'multiply', '×');
-calc.operate(2, 'divide', '/');
+const calc = calcFactory(10);
+calc.plus(5); 
+calc.minus(3); 
+calc.multiply(3);
+calc.divide(2);
+
