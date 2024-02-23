@@ -31,4 +31,4 @@ function fn2(arg) {
 }
 const obj4 = fn2(obj); // 問題４
 
-// console.log(obj); // 問題４
+// console.log(obj); // 問題４→ 間違えた
