@@ -25,29 +25,66 @@
  */
 class Calculator {
   constructor() {
-    this.val1 = 0;
-    this.val2 = 0;
+    this.val;
+    this._operator;
+    this._showResult;
   }
 
-  set(val) {}
+  set(val) {
+    if (this.val) {
+      this._operator(this.val, val);
+    } else {
+      this.val = val;
+    }
+    return this;
+  }
 
-  plus() {}
+  _showResult(result) {
+    this.val = result;
+    console.log(this.val);
+  }
 
-  minus() {}
+  plus() {
+    this._operator = (val1, val2) => {
+      const result = val1 + val2;
+      this._showResult(result);
+    };
+    return this;
+  }
 
-  multiply() {}
+  minus() {
+    this._operator = (val1, val2) => {
+      const result = val1 - val2;
+      this._showResult(result);
+    };
+    return this;
+  }
 
-  divide() {}
+  multiply() {
+    this._operator = (val1, val2) => {
+      const result = val1 * val2;
+      this._showResult(result);
+    };
+    return this;
+  }
+
+  divide() {
+    this._operator = (val1, val2) => {
+      const result = val1 / val2;
+      this._showResult(result);
+    };
+    return this;
+  }
 }
 
 const calc = new Calculator();
 
 calc.set(10)
     .minus()
-    // .set(3)  // 7
-    // .mutiply()
-    // .set(6)  // 42
-    // .divide()
-    // .set(2)  // 21
-    // .plus()
-    // .set(2)  // 23
+	.set(3)
+	.multiply()
+	.set(6)
+	.divide()
+	.set(2)
+	.plus()
+	.set(2);
