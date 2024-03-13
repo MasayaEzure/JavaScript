@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <h1>Module Lecture</h1>
     <script>
         const span = document.createElement('span');
         span.textContent = decodeURI(window.location.pathname);
@@ -27,7 +28,14 @@
             コースへ
         </a>
     </div>
+    <script nomodule>alert("no module")</script>
+    <!-- 呼び出した回数分、main.jsが実行される -->
     <script src="main.js" defer></script>
+    <script src="main.js" defer></script>
+    <script src="main.js" defer></script>
+    <!-- 呼び出した回数にかかわらず、moduleB.jsが実行されるのは一度だけ -->
+    <script type="module" src="moduleB.js"></script>
+    <script type="module" src="moduleB.js"></script>
     <script type="module" src="moduleB.js"></script>
 </body>
 
