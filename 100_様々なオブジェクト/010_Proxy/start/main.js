@@ -1,25 +1,24 @@
 const targetObj = { a: 0 };
 
 const handler = {
-  set: function (target, prop, value) {
-    console.log(`[set]: ${prop}`);
+  // トラップ
+  set(target, prop, value, receiver) {  // receiver：インスタンス化されたProxyのオブジェクト
+    console.log(`set: ${prop}`);
     target[prop] = value;
-    // throw new Error("cannnot add prop");
+    // throw new Error("cannot add prop");
   },
-  get: function (target, prop) {
-    if (target.hasOwnProperty(prop)) {
-      return target[prop];
-    } else {
-      return "-1";
-    }
+  get(target, prop, receiver) {
+    console.log(`get: ${prop}`);
+    return target.hasOwnProperty(prop) ? target[prop] : -1;
   },
-  delete: function (target, prop) {
-    console.log(`[delete]: ${prop}`);
+  delete(target, prop) {
+    console.log(`delete: ${prop}`);
     delete target[prop];
-  },
+  }
 };
 
+// 第二引数：第一引数を操作した際に実行される、メソッドが格納されたオブジェクト
 const pxy = new Proxy(targetObj, handler);
 pxy.a = 1;
-console.log(pxy.b);
+pxy.b;
 delete pxy.a;
