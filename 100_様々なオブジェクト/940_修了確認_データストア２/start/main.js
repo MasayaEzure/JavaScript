@@ -17,16 +17,9 @@ class DataSource {
   }
 
   static setLocal(KEY, target) {
-    return new Promise(function (resolve, reject) {
-      try {
-        console.log("set to local");
-        const json = JSON.stringify(target);
-        localStorage.setItem(KEY, json);
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
+    console.log("set to local");
+    const json = JSON.stringify(target);
+    localStorage.setItem(KEY, json);
   }
 }
 
@@ -36,13 +29,7 @@ const pxy = new Proxy(targetObj, {
   set(target, prop, value, receiver) {
     const result = Reflect.set(target, prop, value, receiver);
 
-    DataSource.setLocal(KEY, target)
-      .then(function () {
-        console.log("aaa");
-      })
-      .catch(function (error) {
-        console.log(`Error occurred: ${error}`);
-      });
+    DataSource.setLocal(KEY, target);
 
     return result;
   },
