@@ -8,6 +8,7 @@
  *
  */
 const KEY = "test-data";
+let _dirty = false;
 
 class DataSource {
   static getLocal(KEY) {
@@ -27,9 +28,15 @@ const targetObj = DataSource.getLocal(KEY) || {};
 
 const pxy = new Proxy(targetObj, {
   set(target, prop, value, receiver) {
+    _dirty = true;
     const result = Reflect.set(target, prop, value, receiver);
 
-    DataSource.setLocal(KEY, target);
+    Promise.resolve().then(() => {
+      if (_dirty) {
+        _dirty = false;
+        DataSource.setLocal(KEY, target);
+      }
+    });
 
     return result;
   },
