@@ -18,10 +18,12 @@ class DataSource {
 		return JSON.parse(result);
 	}
 
-	static setLocal(KEY, target) {
+	static async setLocal(KEY, target) {
 		console.log('set to local');
-		const json = JSON.stringify(target);
-		localStorage.setItem(KEY, json);
+		const response = await fetch("../json/test-data.json");
+		const json = await response.json();
+		// const json = JSON.stringify(target);
+		// localStorage.setItem(KEY, json);
 	}
 }
 
