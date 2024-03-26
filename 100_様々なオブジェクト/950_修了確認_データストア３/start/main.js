@@ -11,17 +11,11 @@ const KEY = "test-data";
 const p = Promise.resolve();
 let _dirty;
 
-let isSaved = false;
-
 class DataSource {
   static getLocal(KEY) {
     console.log("get from local");
     const result = localStorage.getItem(KEY);
-    if (!isSaved) {
-      isSaved = true;
-    } else {
-      return JSON.parse(result);
-    }
+    return JSON.parse(result);
   }
 
   static setLocal(KEY, target) {
