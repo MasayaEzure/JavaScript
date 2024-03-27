@@ -10,6 +10,7 @@
 const KEY = "test-data";
 const p = Promise.resolve();
 let _dirty;
+const remoteData = fetch("../json/test-data.json");
 
 class DataSource {
   static getLocal(KEY) {
